@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
   const [count, setCount] = createSignal(0);
-  const [aaa, ddfd] = createSignal(0);
+  const [aaa] = createSignal(0);
 
   return (
     <>
