@@ -1,5 +1,5 @@
 {
-  "name": "aaa",
+  "name": "a",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,11 +8,12 @@
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
+  "dependencies": {
+    "solid-js": "^1.7.8"
+  },
   "devDependencies": {
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
-  },
-  "dependencies": {
-    "@builder.io/qwik": "^1.2.6"
+    "vite": "^4.4.5",
+    "vite-plugin-solid": "^2.7.0"
   }
 }
