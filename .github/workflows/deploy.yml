@@ -1,0 +1,38 @@
+name: Deploy
+run-name: ${{ github.actor }} is building 🚀
+on: [push]
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+          # Example 2
+      - name: Get changed files in the folder
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v34
+        with:
+          files: /**
+
+      - name: Run step if any file(s) in the folder change
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
+        run: |
+          echo "One or more files in the folder has changed."
+          echo "List all the files that have changed: ${{ steps.changed-files-specific.outputs.all_changed_files }}"
+      - uses: actions/setup-node@v3
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Install dependencies
+        run: pnpm i --no-frozen-lockfile
+      - name: Build project
+        run: pnpm build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # The folder the action should deploy.
