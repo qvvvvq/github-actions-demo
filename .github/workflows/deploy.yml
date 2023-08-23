@@ -34,15 +34,7 @@ jobs:
         run: pnpm i --no-frozen-lockfile
       - name: Build project
         run: pnpm build
-      # - name: Deploy 🚀
-      #   uses: JamesIves/github-pages-deploy-action@v4
-      #   with:
-      #     folder: dist # The folder the action should deploy.
-
-      - name: Deploy
-        uses: crazy-max/ghaction-github-pages@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          target_branch: gh-pages-2 # 部署到 gh-pages 分支，master 分支存放的是项目源码，而 gh-pages 分支则用来存放生成的静态文件
-          build_dir: ./dist # vuepress 生成的静态文件存放的地方
+          folder: dist # The folder the action should deploy.
